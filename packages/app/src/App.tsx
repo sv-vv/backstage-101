@@ -36,6 +36,7 @@ import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/
 
 import { githubAuthApiRef } from '@backstage/core-plugin-api';
 import { SignInPage } from '@backstage/core-components';
+import { FirstPage } from '@internal/plugin-first';
 
 const app = createApp({
   apis,
@@ -108,6 +109,7 @@ const routes = (
     </Route>
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
+    <Route path="/first" element={<FirstPage />}/>
   </FlatRoutes>
 );
 
