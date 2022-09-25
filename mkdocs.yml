@@ -5,3 +5,8 @@ docs_dir: ./docs
 
 plugins:
   - techdocs-core
+
+nav:
+  - Backstage:
+    - Getting Started: getting-started.md
+    - Docker: docker.md
