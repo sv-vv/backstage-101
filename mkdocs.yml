@@ -5,4 +5,6 @@ plugins:
   - techdocs-core
 
 nav:
-  - Getting Started: getting-started.md
+  - Backstage:
+    - Getting Started: getting-started.md
+    - Docker: docker.md
