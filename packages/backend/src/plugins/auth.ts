@@ -1,3 +1,4 @@
+import { DEFAULT_NAMESPACE, stringifyEntityRef } from '@backstage/catalog-model';
 import {
   createRouter,
   providers,
@@ -37,8 +38,29 @@ export default async function createPlugin(
       //   https://backstage.io/docs/auth/identity-resolver
       github: providers.github.create({
         signIn: {
-          resolver(_, ctx) {
-            const userRef = 'user:default/guest'; // Must be a full entity reference
+          resolver({ result: { fullProfile } }, ctx) {
+            if (!fullProfile.username) {
+              throw new Error(
+                'Login failed, user profile does not contain an email',
+              );
+            }
+
+            // Next we verify the email domain. It is recommended to include this
+            // kind of check if you don't look up the user in an external service.
+            type GitHubProfile = typeof fullProfile & { _json?: { company: string; }; };
+            const ghProfile: GitHubProfile = fullProfile;
+            if (ghProfile._json?.company?.toLowerCase() !== 'softvision') {
+              throw new Error(
+                `Login failed, this company (${ghProfile._json?.company}) is not accepted`,
+              );
+            }
+
+            // By using `stringifyEntityRef` we ensure that the reference is formatted correctly
+            const userRef = stringifyEntityRef({
+              kind: 'User',
+              name: fullProfile.username,
+              namespace: DEFAULT_NAMESPACE,
+            });
             return ctx.issueToken({
               claims: {
                 sub: userRef, // The user's own identity
@@ -46,7 +68,7 @@ export default async function createPlugin(
               },
             });
           },
-          // resolver: providers.github.resolvers.usernameMatchingUserEntityName(),
+//          resolver: providers.github.resolvers.usernameMatchingUserEntityName(),
         },
       }),
     },
