@@ -1,9 +1,8 @@
-site_name: 'bootstrap'
+site_name: 'Bootstrap'
 site_description: 'Running mkdocs for the first time'
-
-nav:
-  - Home: index.md
 
 plugins:
   - techdocs-core
 
+nav:
+  - Getting Started: getting-started.md

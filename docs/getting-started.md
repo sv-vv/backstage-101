@@ -2,7 +2,7 @@
 
 - Its purpose is to provide a centralized repo of ones application being developed. It's focusing on keeping the path to the apps, the docuemtation, the people that are working on or linked to the project..and as well as their dependencies.
 
-- With backstage, things should be simplified in a way that everything is in one place, the onboarding of new members is easier, the dependencies are easily spotted, in one word is good for tracking companies projects and components.
+- With backstage, things should be simplified in a way that everything is in one place, the onboarding of new members is easier, the dependencies are easily spotted, in one word is good for tracking companies projects and their components.
 
 I. Install backstage app
 
@@ -89,7 +89,7 @@ Add pg plugin to backstage
 # From your Backstage root directory
 yarn add --cwd packages/backend pg
 
-In app-config.yaml and add your PostgreSQL configurati  on.
+In app-config.yaml and add your PostgreSQL configuration.
 backend:
   database:
     # config options: https://node-postgres.com/api/client
@@ -106,7 +106,7 @@ backend:
         #ca: # if you have a CA file and want to verify it you can uncomment this section
         #$file: <file-path>/ca/server.crt
 
-Export he env variables into a sh script
+Export the env variables into a sh script
 export POSTGRES_HOST=127.0.0.1
 export POSTGRES_PORT=5432
 export POSTGRES_USER=chuser
