@@ -2196,6 +2196,24 @@
     qs "^6.9.4"
     react-use "^17.2.4"
 
+"@backstage/plugin-sonarqube@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-sonarqube/-/plugin-sonarqube-0.4.1.tgz#48fdc26170a4657dc19f418e8c638025a5c89ca6"
+  integrity sha512-vnUFpMEeYSxgcEqFQVHMHhSiZq32FvurqFkSas2V2jWUtIVwvOnZ0/8T3QCUYG02ldrRlEY4bkf7Ewxw292iIg==
+  dependencies:
+    "@backstage/catalog-model" "^1.1.1"
+    "@backstage/core-components" "^0.11.1"
+    "@backstage/core-plugin-api" "^1.0.6"
+    "@backstage/plugin-catalog-react" "^1.1.4"
+    "@backstage/theme" "^0.2.16"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.57"
+    "@material-ui/styles" "^4.10.0"
+    cross-fetch "^3.1.5"
+    rc-progress "3.4.0"
+    react-use "^17.2.4"
+
 "@backstage/plugin-tech-radar@^0.5.16":
   version "0.5.16"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-tech-radar/-/plugin-tech-radar-0.5.16.tgz#0f0d94d7f058962d5b59cd698011bb0d4c8b769e"
@@ -6152,6 +6170,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@backstage/plugin-techdocs-react" "^1.0.4"
     "@backstage/plugin-user-settings" "^0.4.8"
     "@backstage/theme" "^0.2.16"
+    "@internal/plugin-first" "^0.1.0"
     "@material-ui/core" "^4.12.2"
     "@material-ui/icons" "^4.9.1"
     history "^5.0.0"
