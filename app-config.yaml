@@ -142,3 +142,6 @@ sonarqube:
     - name: first-cube
       baseUrl: http://localhost:9000
       apiKey: ${SONAR_FIRST_CUBE_API_KEY}
+    - name: sonarcloud
+      baseUrl: https://sonarcloud.io
+      apiKey: ${SONAR_SONARCLOUD_API_KEY}

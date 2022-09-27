@@ -4,9 +4,10 @@ metadata:
   name: backstage-101
   description: An example of a Backstage application.
   # Example for optional annotations
-  # annotations:
+  annotations:
   #   github.com/project-slug: backstage/backstage
   #   backstage.io/techdocs-ref: dir:.
+    sonarqube.org/project-key: cristian-hurdubai-sv_bootstrap
 spec:
   type: website
   owner: john@example.com
