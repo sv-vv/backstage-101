@@ -136,3 +136,9 @@ catalog:
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
     #   rules:
     #     - allow: [User, Group]
+
+sonarqube:
+  instances:
+    - name: first-cube
+      baseUrl: http://localhost:9000
+      apiKey: ${SONAR_FIRST_CUBE_API_KEY}
