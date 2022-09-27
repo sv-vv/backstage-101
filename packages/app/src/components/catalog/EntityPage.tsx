@@ -72,7 +72,7 @@ import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 
 // packages/app/src/components/catalog/EntityPage.tsx
-import { EntitySonarQubeCard, SonarQubeCard } from '@backstage/plugin-sonarqube';
+import { EntitySonarQubeCard } from '@backstage/plugin-sonarqube';
 
 const techdocsContent = (
   <EntityTechdocsContent>

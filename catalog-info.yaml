@@ -6,6 +6,7 @@ metadata:
   # Example for optional annotations
   annotations:
     # github.com/project-slug: backstage/backstage
+    backstage.io/managed-by-location: url:https://github.com/cristian-hurdubai-sv/bootstrap/blob/development/catalog-info.yaml
     backstage.io/techdocs-ref: dir:.
     sonarqube.org/project-key: cristian-hurdubai-sv_bootstrap
 spec:
