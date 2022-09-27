@@ -27,8 +27,8 @@ const useStyles = makeStyles({
   },
 });
 const LogoFull = () => {
+  return (<h1 style={{color: "#fff", fontSize: "32px"}}>Bootstrap</h1>);
   const classes = useStyles();
-
   return (
     <svg
       className={classes.svg}
