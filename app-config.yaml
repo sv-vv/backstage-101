@@ -64,7 +64,7 @@ proxy:
   '/sonarqube':
     target: 'https://sonarcloud.io/api'
     allowedMethods: ['GET']
-    auth: "${SONARQUBE_TOKEN}:"
+    auth: ${SONARQUBE_TOKEN}
 
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
