@@ -1,0 +1,7 @@
+site_name: Backstage HOWTO
+site_description: Documentation of the Backstage POC
+
+docs_dir: ./docs
+
+plugins:
+  - techdocs-core
