@@ -19,7 +19,11 @@ app:
         links:
           - url: https://stackoverflow.com/questions/tagged/backstage
             title: 'Questions tagged [backstage]'
-
+      - title: Application Help
+        icon: Help
+        links:
+          - url: /docs/default/Component/backstage-101
+            title: Main Help Page
 
 organization:
   name: My Company
