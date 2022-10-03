@@ -89,6 +89,9 @@ techdocs:
     runIn: 'docker' # Alternatives - 'local'
   publisher:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
+    local:
+      # Local data, file locations are relative to the backend process, typically `packages/backend`
+      publishDirectory: '../../tech-docs-local'
 
 auth:
   environment: development
