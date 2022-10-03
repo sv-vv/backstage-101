@@ -10,3 +10,7 @@ nav:
   - Backstage:
     - Getting Started: getting-started.md
     - Docker: docker.md
+
+  - How to use Backstage:
+    - For users: for-users/index.md
+    - For maintainers: for-maintainers/index.md
