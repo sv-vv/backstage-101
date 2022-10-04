@@ -1,3 +1,5 @@
-# Backstage.io POC
+# Backstage POC
 
-Welcome!
+Welcome to Backstage POC!
+
+This is a collection of documents that I write as I progress learning about Backstage.io
