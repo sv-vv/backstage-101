@@ -8,5 +8,6 @@ nav:
   - Backstage:
     - Getting Started: getting-started.md
     - Docker: docker.md
+    - Dockerization: dockerisation.md
   - Plugins: 
     - SonarQube: sonarqube.md
