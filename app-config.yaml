@@ -29,14 +29,18 @@ backend:
   # This is for local development only, it is not recommended to use this in production
   # The production database configuration is stored in app-config.production.yaml
   database:
+    # client: better-sqlite3
+    # connection: ':memory:'
     # config options: https://node-postgres.com/api/client
     client: pg
     # if you want to use only 1 database for all plugins uncomment the following line
     pluginDivisionMode: schema
     connection:
+      # connectionString: 'postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_USER}'
       host: ${POSTGRES_HOST}
       port: ${POSTGRES_PORT}
       user: ${POSTGRES_USER}
+      database: ${POSTGRES_USER}
       password: ${POSTGRES_PASSWORD}
       # https://node-postgres.com/features/ssl
       #ssl: require # see https://www.postgresql.org/docs/current/libpq-ssl.html Table 33.1. SSL Mode Descriptions (e.g. require)
@@ -77,7 +81,7 @@ sonarqube:
 techdocs:
   builder: 'local' # Alternatives - 'external'
   generator:
-    runIn: 'docker' # Alternatives - 'local'
+    runIn: 'docker' # Alternatives - 'docker'
   publisher:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 
@@ -125,3 +129,14 @@ catalog:
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
     #   rules:
     #     - allow: [User, Group]
+
+search:
+  pg:
+    highlightOptions:
+      useHighlight: true # Used to enable to disable the highlight feature. The default value is true
+      maxWord: 35 # Used to set the longest headlines to output. The default value is 35.
+      minWord: 15 # Used to set the shortest headlines to output. The default value is 15.
+      shortWord: 3 # Words of this length or less will be dropped at the start and end of a headline, unless they are query terms. The default value of three (3) eliminates common English articles.
+      highlightAll: false # If true the whole document will be used as the headline, ignoring the preceding three parameters. The default is false.
+      maxFragments: 0 # Maximum number of text fragments to display. The default value of zero selects a non-fragment-based headline generation method. A value greater than zero selects fragment-based headline generation (see the linked documentation above for more details).
+      fragmentDelimiter: ' ... ' # Delimiter string used to concatenate fragments. Defaults to " ... ".
