@@ -1,0 +1,46 @@
+version: '3.8'
+services:
+  backstage:
+    image: backstage
+    build:
+      context: .
+      dockerfile: packages/backend/Dockerfile
+    environment:
+      # This value must match the name of the postgres configuration block.
+      POSTGRES_PORT: ${POSTGRES_PORT}
+      POSTGRES_HOST: db
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      SONARQUBE_TOKEN: ${SONARQUBE_TOKEN}
+      GITHUB_BKSTG_CLIENT_ID: ${GITHUB_BKSTG_CLIENT_ID}
+      GITHUB_BKSTG_CLIENT_SECRET: ${GITHUB_BKSTG_CLIENT_SECRET}
+    ports:
+      - "7007:7007"
+    container_name: backstage_backend
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_USER}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+    container_name: backstage_db
+
+  frontend:
+    image: backstage-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile.hostbuild
+    ports:
+      - "3000:80"
+    container_name: backstage_frontend
+
+volumes:
+  db-data:
+    driver: local
