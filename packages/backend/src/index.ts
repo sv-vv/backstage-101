@@ -28,6 +28,7 @@ import scaffolder from './plugins/scaffolder';
 import proxy from './plugins/proxy';
 import techdocs from './plugins/techdocs';
 import sonarqube from './plugins/sonarqube';
+import kubernetes from './plugins/kubernetes';
 import search from './plugins/search';
 import { PluginEnvironment } from './types';
 import { ServerPermissionClient } from '@backstage/plugin-permission-node';
@@ -85,6 +86,7 @@ async function main() {
   const proxyEnv = useHotMemoize(module, () => createEnv('proxy'));
   const techdocsEnv = useHotMemoize(module, () => createEnv('techdocs'));
   const sonarqubeEnv = useHotMemoize(module, () => createEnv('sonarqube'));
+  const kubernetesEnv = useHotMemoize(module, () => createEnv('kubernetes'));
   const searchEnv = useHotMemoize(module, () => createEnv('search'));
   const appEnv = useHotMemoize(module, () => createEnv('app'));
 
@@ -94,6 +96,7 @@ async function main() {
   apiRouter.use('/auth', await auth(authEnv));
   apiRouter.use('/techdocs', await techdocs(techdocsEnv));
   apiRouter.use('/sonarqube', await sonarqube(sonarqubeEnv));
+  apiRouter.use('/kubernetes', await kubernetes(kubernetesEnv));
   apiRouter.use('/proxy', await proxy(proxyEnv));
   apiRouter.use('/search', await search(searchEnv));
 
