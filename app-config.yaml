@@ -147,3 +147,19 @@ sonarqube:
     - name: first-cube
       baseUrl: http://localhost:9000
       apiKey: ${SONAR_FIRST_CUBE_API_KEY}
+
+kubernetes:
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: 'config'
+      clusters:
+        - url: http://127.0.0.1:9999
+          name: minikube
+          authProvider: 'serviceAccount'
+          skipTLSVerify: false
+          skipMetricsLookup: true
+          serviceAccountToken: ${K8S_MINIKUBE_TOKEN}
+          dashboardUrl: ${K8S_DASHBOARD_URL}       # url copied from running the command: minikube service kubernetes-dashboard -n kubernetes-dashboard
+          dashboardApp: standard
+          caData: ${K8S_CONFIG_CA_DATA}
