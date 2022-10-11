@@ -7,13 +7,15 @@ plugins:
   - techdocs-core
 
 nav:
-  - How to build backstage:
+  - How to build the Backstage application:
     - Getting Started: getting-started.md
     - Docker: docker.md
     - Dockerization: dockerisation.md
+    - DataBase: database.md
 
   - Plugins:
-    - SonarQube: sonarqube.md
+    - SonarQube: plugins/sonarqube.md
+    - Search: plugins/search.md
 
   - How to use Backstage:
     - For users: for-users/index.md
