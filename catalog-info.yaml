@@ -5,7 +5,7 @@ metadata:
   description: An example of a Backstage application.
   # Example for optional annotations
   annotations:
-    # github.com/project-slug: backstage/backstage
+    github.com/project-slug: cristian-hurdubai-sv/bootstrap
     backstage.io/managed-by-location: url:https://github.com/cristian-hurdubai-sv/bootstrap/blob/development/catalog-info.yaml
     backstage.io/techdocs-ref: dir:.
     sonarqube.org/project-key: cristian-hurdubai-sv_bootstrap
