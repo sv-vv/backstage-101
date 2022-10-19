@@ -75,9 +75,13 @@ export const DenseTable = ({ users }: DenseTableProps) => {
 
 export const ExampleFetchComponent = () => {
   const { value, loading, error } = useAsync(async (): Promise<User[]> => {
-    const response = await fetch('https://randomuser.me/api/?results=20');
+    // const response = await fetch('https://randomuser.me/api/?results=20');
+    // const data = await response.json();
+    // return data.results;
+    const response = await fetch('http://localhost:7007/api/first/get-random-users');
     const data = await response.json();
-    return data.results;
+    return data;
+
   }, []);
 
   if (loading) {
