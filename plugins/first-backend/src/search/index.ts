@@ -1,0 +1,1 @@
+export { RandomUserCollatorFactory } from './RandomUserCollatorFactory';
