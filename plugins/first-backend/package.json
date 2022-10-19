@@ -27,9 +27,11 @@
     "@backstage/config": "^1.0.2",
     "@backstage/plugin-search-common": "^1.1.0",
     "@types/express": "*",
+    "@types/uuid": "^8.3.4",
+    "cross-fetch": "^3.1.5",
     "express": "^4.17.1",
     "express-promise-router": "^4.1.0",
-    "node-fetch": "^2.6.7",
+    "uuid": "^9.0.0",
     "winston": "^3.2.1",
     "yn": "^4.0.0"
   },

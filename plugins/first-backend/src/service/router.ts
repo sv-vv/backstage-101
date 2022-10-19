@@ -16,8 +16,10 @@
 
 import { errorHandler } from '@backstage/backend-common';
 import express from 'express';
+// import fetch from 'cross-fetch';
 import Router from 'express-promise-router';
 import { Logger } from 'winston';
+import * as userList from "../data/users.json";
 
 export interface RouterOptions {
   logger: Logger;
@@ -27,9 +29,15 @@ export async function createRouter(
   options: RouterOptions,
 ): Promise<express.Router> {
   const { logger } = options;
-
   const router = Router();
   router.use(express.json());
+
+  router.get('/get-random-users', (_, response) => {
+    // const results = await fetch('https://randomuser.me/api2/?results=50');
+    // const data = await results.json();
+    // response.send(data.results);
+    response.send(userList.list);
+  });
 
   router.get('/health', (_, response) => {
     logger.info('PONG!');
