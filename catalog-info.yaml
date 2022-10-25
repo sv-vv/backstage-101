@@ -2,12 +2,18 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: backstage-app
-  description: An example of a Backstage application.
+  description: Backstage application POC 
+  tags:
+    - web-app
+    - catalog
+    - POC
+  annotations:
+    backstage.io/techdocs-ref: dir:.
   # Example for optional annotations
   # annotations:
   #   github.com/project-slug: backstage/backstage
   #   backstage.io/techdocs-ref: dir:.
 spec:
   type: website
-  owner: john@example.com
+  owner: backastage-boys 
   lifecycle: experimental
