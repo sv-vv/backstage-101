@@ -6,7 +6,7 @@ metadata:
   tags:
     - web-app
     - catalog
-    - POC
+    - backstage-poc
   annotations:
     backstage.io/techdocs-ref: dir:.
   # Example for optional annotations
