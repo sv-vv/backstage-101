@@ -14,15 +14,18 @@
  * limitations under the License.
  */
 
-import { errorHandler } from '@backstage/backend-common';
+import { errorHandler, PluginDatabaseManager } from '@backstage/backend-common';
 import express from 'express';
-// import fetch from 'cross-fetch';
+import fetch from 'cross-fetch';
 import Router from 'express-promise-router';
 import { Logger } from 'winston';
 import * as userList from "../data/users.json";
+import { DatabaseRandowUserStore } from '../database';
+import { RawUser } from '../database/types';
 
 export interface RouterOptions {
   logger: Logger;
+  database: PluginDatabaseManager;
 }
 
 export async function createRouter(
@@ -32,12 +35,34 @@ export async function createRouter(
   const router = Router();
   router.use(express.json());
 
-  router.get('/get-random-users', (_, response) => {
-    // const results = await fetch('https://randomuser.me/api2/?results=50');
-    // const data = await results.json();
+  const dbHandler: DatabaseRandowUserStore = await DatabaseRandowUserStore.create(options.database);
+
+  router.get('/get-random-users', async (_, response) => {
+    const results = await fetch('https://randomuser.me/api/?results=50');
+    const data = await results.json();
     // response.send(data.results);
-    response.send(userList.list);
+    await dbHandler.transaction( async tx => {
+      await dbHandler.insert(tx, data.results as RawUser[]);
+    })
+    response.send(data.results);
   });
+
+  router.get('/get-all', async (_, response) => {
+    const data = await dbHandler.getAll();
+    response.send(data);
+  });
+
+  router.get('/users', async (_, response) => {
+    const data = await dbHandler.getAll();
+    response.send(data);
+  });
+
+  router.get('/users/:id', async (req, response) => {
+    const userId: string = req.params.id || "";
+    const data = await dbHandler.get(userId);
+    response.send(data);
+  });
+
 
   router.get('/health', (_, response) => {
     logger.info('PONG!');
