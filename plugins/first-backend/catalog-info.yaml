@@ -4,8 +4,8 @@ metadata:
   name: first-backend-plugin
   description: A demo API that uses an external data source to store it in the database and expose further in the UI
   # Example for optional annotations
-  # annotations:
-  #   github.com/project-slug: cristian-hurdubai-sv/bootstrap
+  annotations:
+    github.com/project-slug: cristian-hurdubai-sv/bootstrap
 spec:
   type: service
   owner: cristian.hurdubai@softvision.com
