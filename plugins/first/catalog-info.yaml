@@ -4,8 +4,8 @@ metadata:
   name: first-plugin
   description: A demo plugin
   # Example for optional annotations
-  #annotations:
-  #  github.com/project-slug: cristian-hurdubai-sv/bootstrap
+  annotations:
+    github.com/project-slug: cristian-hurdubai-sv/bootstrap
 spec:
   type: plugin
   owner: cristian.hurdubai@softvision.com
