@@ -4,7 +4,7 @@ import { Knex } from 'knex';
 export async function applyDatabaseMigrations(knex: Knex): Promise<void> {
   const migrationsDir = resolvePackagePath(
     '@internal/plugin-first-backend',
-    'database/migrations',
+    'migrations',
   );
 
   await knex.migrate.latest({

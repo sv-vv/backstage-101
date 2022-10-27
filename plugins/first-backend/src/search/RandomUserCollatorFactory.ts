@@ -31,8 +31,7 @@ export class RandomUserCollatorFactory implements RandomUserDocument {
     }
 
     public static fromConfig(config: Config, options: RandomUserCollatorFactoryOptions): RandomUserCollatorFactory {
-        const baseUrl = config.getOptionalString('first.baseUrl') || 'http://localhost:7007/api/first/get-random-users';
-
+        const baseUrl = (config.getOptionalString('first.baseUrl') || 'http://localhost:7007/api/first') + "/get-all";
         return new RandomUserCollatorFactory({ ...options, baseUrl});
     }
 
@@ -52,11 +51,11 @@ export class RandomUserCollatorFactory implements RandomUserDocument {
         for (const user of data) {
             yield {
                 title: user.email,
-                text: `${user.name.first} ${user.name.last}`,
-                location: `/first/${user.id}`,
+                text: `${user.first_name} ${user.last_name}`,
+                location: `/first?id=${user.id}`,
                 id: user.id,
-                firstName: user.name.first,
-                lastName: user.name.last,
+                firstName: user.first_name,
+                lastName: user.last_name,
                 email: user.email,
             };
         }

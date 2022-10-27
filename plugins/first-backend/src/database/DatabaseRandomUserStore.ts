@@ -1,4 +1,4 @@
-import { RandomUserRow } from './types';
+import { apiOptions, RandomUserRow, RawUser } from './types';
 
 import { v4 as uuid } from 'uuid';
 
@@ -31,12 +31,39 @@ export class DatabaseRandowUserStore {
     return this.db.transaction();
   }
 
-  public async insert(tx: Knex.Transaction, randomUsers: RandomUserRow[]) {
-    await tx<RandomUserRow>('random_user').insert(
+  public async insert(tx: Knex.Transaction, randomUsers: RawUser[]) {
+    await tx('random_user').insert(
         randomUsers.map(randomUser => ({
-            ...randomUser,
+            first_name: randomUser.name.first,
+            last_name: randomUser.name.last,
+            email: randomUser.email,
+            phone: randomUser.phone,
+            avatar: randomUser.picture.medium,
+            nat: randomUser.nat,
+            gender: randomUser.gender,
             id: uuid(),
+            target: randomUser.location?.state ?? ""
         })),
       );
+  }
+
+  public async getAll(): Promise<RandomUserRow[]> {
+    return await this.db('random_user')
+        .select('*');
+  }
+
+  public async getAllByFilter(options: apiOptions): Promise<RandomUserRow[]> {
+    const query = this.db('random_user')
+        .select('*');
+    
+    return await query;
+        // .paginate(options.limit, options.offset);
+  }
+
+  public async get(id: string): Promise<RandomUserRow[]> {
+    return await this.db('random_user')
+        .select('*')
+        .where('id', id)
+        .first();
   }
 }
