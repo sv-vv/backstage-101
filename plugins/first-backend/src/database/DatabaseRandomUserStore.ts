@@ -1,4 +1,4 @@
-import { apiOptions, RandomUserRow, RawUser } from './types';
+import { RandomUserRow, RawUser } from './types';
 
 import { v4 as uuid } from 'uuid';
 
@@ -52,7 +52,7 @@ export class DatabaseRandowUserStore {
         .select('*');
   }
 
-  public async getAllByFilter(options: apiOptions): Promise<RandomUserRow[]> {
+  public async getAllByFilter(): Promise<RandomUserRow[]> {
     const query = this.db('random_user')
         .select('*');
     
@@ -65,5 +65,11 @@ export class DatabaseRandowUserStore {
         .select('*')
         .where('id', id)
         .first();
+  }
+
+  public async delete(id: string): Promise<number> {
+    return await this.db('random_user')
+        .where('id', id)
+        .del();
   }
 }

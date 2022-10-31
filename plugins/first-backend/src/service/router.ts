@@ -19,7 +19,6 @@ import express from 'express';
 import fetch from 'cross-fetch';
 import Router from 'express-promise-router';
 import { Logger } from 'winston';
-import * as userList from "../data/users.json";
 import { DatabaseRandowUserStore } from '../database';
 import { RawUser } from '../database/types';
 
@@ -37,7 +36,7 @@ export async function createRouter(
 
   const dbHandler: DatabaseRandowUserStore = await DatabaseRandowUserStore.create(options.database);
 
-  router.get('/get-random-users', async (_, response) => {
+  router.put('/get-random-users', async (_, response) => {
     const results = await fetch('https://randomuser.me/api/?results=50');
     const data = await results.json();
     // response.send(data.results);
@@ -58,9 +57,23 @@ export async function createRouter(
   });
 
   router.get('/users/:id', async (req, response) => {
-    const userId: string = req.params.id || "";
-    const data = await dbHandler.get(userId);
-    response.send(data);
+    try {
+      const userId: string = req.params.id || "";
+      const data = await dbHandler.get(userId);
+      response.send(data);
+    } catch (err) {
+      response.status(404).send({status: 'nok', message: "User not found"});
+    }
+  });
+
+  router.delete('/users/:id', async (req, response) => {
+    try {
+      const userId: string = req.params.id || "";
+      await dbHandler.delete(userId);
+      response.status(204).send();
+    } catch (err) {
+      response.status(404).send({status: 'nok', message: "User not found"});
+    }
   });
 
 

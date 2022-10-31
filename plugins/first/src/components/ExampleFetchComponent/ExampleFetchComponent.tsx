@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Table, TableColumn, Progress } from '@backstage/core-components';
 import Alert from '@material-ui/lab/Alert';
 import useAsync from 'react-use/lib/useAsync';
-import { useLocation } from 'react-router-dom';
 import {
-  FirstClient,
   FirstApiOptions,
   FirstApiResult,
   RandomUserItem,
-  RandomUserFields,
   firstApiRef,
 } from '../../api';
 import { useApi } from '@backstage/core-plugin-api';
@@ -119,24 +116,4 @@ export const ExampleFetchComponent = () => {
   }
 
   return <DenseTable users={value?.data || []} />;
-  /*
-  const { value, loading, error } = useAsync(async (): Promise<
-    RandomUser[]
-  > => {
-    // const response = await fetch('https://randomuser.me/api/?results=20');
-    // const data = await response.json();
-    // return data.results;
-    const response = await fetch('http://localhost:7007/api/first/get-all');
-    const data = await response.json();
-    return data;
-  }, []);
-
-  if (loading) {
-    return <Progress />;
-  } else if (error) {
-    return <Alert severity="error">{error.message}</Alert>;
-  }
-
-  return <DenseTable users={value || []} />;
-  */
 };

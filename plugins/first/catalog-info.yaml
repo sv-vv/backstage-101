@@ -5,8 +5,10 @@ metadata:
   description: A demo plugin
   # Example for optional annotations
   annotations:
-    github.com/project-slug: cristian-hurdubai-sv/bootstrap
+    github.com/project-slug: cristian-hurdubai-sv/plugin-first
 spec:
-  type: plugin
+  type: website
   owner: cristian.hurdubai@softvision.com
   lifecycle: experimental
+  dependsOn:
+    - api:first-backend-plugin
