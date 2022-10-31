@@ -66,4 +66,10 @@ export class DatabaseRandowUserStore {
         .where('id', id)
         .first();
   }
+
+  public async delete(id: string): Promise<number> {
+    return await this.db('random_user')
+        .where('id', id)
+        .del();
+  }
 }
