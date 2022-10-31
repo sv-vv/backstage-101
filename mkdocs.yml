@@ -1,0 +1,9 @@
+site_name: 'Backstage POC'
+site_description: 'Backstage POC to integrate with existing apps and services'
+
+plugins:
+  - techdocs-core
+
+nav:
+  - Plugins:
+     - Splunk monitor: 'plugins/splunk-monitor.md'
