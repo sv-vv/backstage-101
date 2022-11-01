@@ -5,7 +5,7 @@
     "plugins/*/src",
     "plugins/*/dev",
     "plugins/*/migrations"
-  ],
+, "plugins/splunk-monitor/src/api/types.ts"  ],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "outDir": "dist-types",

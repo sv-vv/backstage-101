@@ -55,6 +55,7 @@ import {
 
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
+import { EntitySplunkMonitorCard } from '@internal/plugin-splunk-monitor';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -126,6 +127,11 @@ const overviewContent = (
     </Grid>
     <Grid item md={8} xs={12}>
       <EntityHasSubcomponentsCard variant="gridItem" />
+    </Grid>
+    <Grid container item md={12}>
+      <Grid item md={6}>
+        <EntitySplunkMonitorCard />
+      </Grid>
     </Grid>
   </Grid>
 );
@@ -248,6 +254,11 @@ const apiPage = (
           </Grid>
           <Grid item md={6}>
             <EntityConsumingComponentsCard />
+          </Grid>
+        </Grid>
+         <Grid container item md={12}>
+          <Grid item md={6}>
+            <EntitySplunkMonitorCard/>
           </Grid>
         </Grid>
       </Grid>

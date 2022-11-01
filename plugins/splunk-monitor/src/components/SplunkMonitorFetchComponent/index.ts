@@ -1,0 +1,1 @@
+export { SplunkMonitorFetchComponent } from './SplunkMonitorFetchComponent';

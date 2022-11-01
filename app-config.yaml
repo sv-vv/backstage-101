@@ -1,9 +1,9 @@
 app:
-  title: Scaffolded Backstage App
+  title: Rabobank Backstage
   baseUrl: http://localhost:3000
 
 organization:
-  name: My Company
+  name: Rabobank 
 
 backend:
   # Used for enabling authentication, secret is shared by all backend plugins
@@ -50,6 +50,11 @@ proxy:
   '/test':
     target: 'https://example.com'
     changeOrigin: true
+  '/splunkmonitor':
+    target: 'http://localhost:3003'
+    changeOrigin: true
+    headers:
+      Authorization: ${SPLUNK_API_KEY}
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
@@ -58,7 +63,7 @@ proxy:
 techdocs:
   builder: 'local' # Alternatives - 'external'
   generator:
-    runIn: 'docker' # Alternatives - 'local'
+    runIn: 'local' # Alternatives - 'local'
   publisher:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 
