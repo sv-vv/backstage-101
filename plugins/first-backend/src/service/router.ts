@@ -36,7 +36,7 @@ export async function createRouter(
 
   const dbHandler: DatabaseRandowUserStore = await DatabaseRandowUserStore.create(options.database);
 
-  router.get('/get-random-users', async (_, response) => {
+  router.put('/get-random-users', async (_, response) => {
     const results = await fetch('https://randomuser.me/api/?results=50');
     const data = await results.json();
     // response.send(data.results);

@@ -21,7 +21,7 @@ spec:
       - url: http://localhost:7007/api/first/
     paths:
       /get-random-users:
-        get:
+        put:
           description: Get a list of random users from randomuser.me
           responses:
             '200':
