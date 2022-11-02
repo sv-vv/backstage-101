@@ -23,8 +23,8 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@backstage/backend-common": "^0.15.1",
-    "@backstage/config": "^1.0.2",
+    "@backstage/backend-common": "^0.15.2",
+    "@backstage/config": "^1.0.3",
     "@backstage/plugin-search-common": "^1.1.0",
     "@types/express": "*",
     "@types/uuid": "^8.3.4",
@@ -36,7 +36,7 @@
     "yn": "^4.0.0"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.19.0",
+    "@backstage/cli": "^0.20.0",
     "@types/supertest": "^2.0.8",
     "msw": "^0.46.0",
     "supertest": "^4.0.2"

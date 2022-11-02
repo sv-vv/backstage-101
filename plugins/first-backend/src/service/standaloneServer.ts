@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-import { createServiceBuilder } from '@backstage/backend-common';
+import { createServiceBuilder, PluginDatabaseManager } from '@backstage/backend-common';
 import { Server } from 'http';
 import { Logger } from 'winston';
 import { createRouter } from './router';
+import { Knex } from 'knex';
 
 export interface ServerOptions {
   port: number;
@@ -30,8 +31,19 @@ export async function startStandaloneServer(
 ): Promise<Server> {
   const logger = options.logger.child({ service: 'first-backend-backend' });
   logger.debug('Starting application server...');
+  const pluginDatabase: PluginDatabaseManager = {
+    getClient: () => {
+      return Promise.resolve({
+        migrate: {
+          latest: () => {},
+        },
+      }) as unknown as Promise<Knex>;
+    },
+  };
+  
   const router = await createRouter({
     logger,
+    database: pluginDatabase,
   });
 
   let service = createServiceBuilder(module)
