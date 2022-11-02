@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-import { getVoidLogger } from '@backstage/backend-common';
+import { getVoidLogger, PluginDatabaseManager } from '@backstage/backend-common';
 import express from 'express';
 import request from 'supertest';
+import { Knex } from 'knex';
 
 import { createRouter } from './router';
 
@@ -24,8 +25,18 @@ describe('createRouter', () => {
   let app: express.Express;
 
   beforeAll(async () => {
+    const pluginDatabase: PluginDatabaseManager = {
+      getClient: () => {
+        return Promise.resolve({
+          migrate: {
+            latest: () => {},
+          },
+        }) as unknown as Promise<Knex>;
+      },
+    };
     const router = await createRouter({
       logger: getVoidLogger(),
+      database: pluginDatabase,
     });
     app = express().use(router);
   });
