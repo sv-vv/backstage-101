@@ -18,7 +18,7 @@ describe('SplunkMonitorFetchComponent', () => {
       ),
     );
   });
-  it('should render', async () => {
+  xit('should render', async () => {
     const rendered = render(<SplunkMonitorFetchComponent />);
     expect(await rendered.findByTestId('progress')).toBeInTheDocument();
   });

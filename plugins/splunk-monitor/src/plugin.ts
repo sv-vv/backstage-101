@@ -2,7 +2,6 @@ import {
   createApiFactory,
   createComponentExtension,
   createPlugin,
-  createRoutableExtension,
   discoveryApiRef
 } from '@backstage/core-plugin-api';
 import { SplunkMonitorApiClient } from './api/SplunkMonitorApiClient';

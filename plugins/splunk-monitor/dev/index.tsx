@@ -20,8 +20,11 @@ const mockEntity: Entity = {
   }
 }
 class MockSplunkMonitorApi implements SplunkMonitorApi {
-  async getStatus(): Promise<{ status: string }> {
-    return { status: 'ok' };
+  async getStatus(): Promise<Response> {
+    const resp: Response = {
+      statusText: 'Application is up and running...',
+    } as Response;
+    return resp;
   }
 }
 

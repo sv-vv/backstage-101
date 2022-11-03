@@ -30,6 +30,13 @@ WORKDIR /app
 # This switches many Node.js dependencies to production mode.
 ENV NODE_ENV production
 
+# Environment variables for app-config.yaml
+ARG AZURE_DEVOPS_TOKEN
+ARG SPLUNK_AUTHORIZATION_KEY
+
+ENV AZURE_DEVOPS_TOKEN=$AZURE_DEVOPS_TOKEN
+ENV SPLUNK_AUTHORIZATION_KEY=$SPLUNK_AUTHORIZATION_KEY
+
 # Copy repo skeleton first, to avoid unnecessary docker cache invalidation.
 # The skeleton contains the package.json of each package in the monorepo,
 # and along with yarn.lock and the root package.json, that's enough to run yarn install.
